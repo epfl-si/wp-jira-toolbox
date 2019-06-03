@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>[WWP] Contrôle visuel des sites migrés de Jahia à WordPress</title>
+</head>
+<body>
+
+<hr>
+<p>English version below</p>
+<hr>
+Madame, Monsieur,<br><br>
+
+<p>Nous avons déployé (ou re-déployé afin de bénéficier des dernières mises à jour et corrections) le site '{{site_name}}'
+    sur notre environnement de test afin que vous puissiez procéder à un contrôle visuel de celui-ci. Vous êtes à
+    l’étape 2 dans le Workflow de migration
+    (<a href="https://help-wordpress.epfl.ch/wp-content/uploads/2018/08/Workflow_migration.pdf"
+        target="_blank">cliquez pour visualiser</a>)</p>
+<p>Vous pouvez y accéder à l'adresse: <a href="{{ WordPress_url }}" target="_blank">{{ WordPress_url }}</a>
+en utilisant le bouton login en bas. <br>
+    <img src="https://help-wordpress.epfl.ch/wp-content/uploads/2018/03/ezgif.com-video-to-gif.gif"
+         alt="connexion à un site en migration"></p>
+
+<p>Vous trouverez un bouton Feedback (à droite de chaque écran) <br>
+    <img src="https://help-wordpress.epfl.ch/wp-content/uploads/2018/03/Feedback-avec-Jira.gif"
+         alt="feedback avec Jira"></li>
+</p>
+
+<p>Nous vous remercions de votre collaboration.</p>
+
+<p>Nous nous tenons évidemment à votre disposition si vous avez des questions.</p>
+
+<p>Bonne journée,</p>
+
+<p><a href="mailto:wp-migration@epfl.ch">L'équipe de projet</a><br>
+    Pour l’équipe de projet de refonte du site web <br>
+    Plus d’informations à <a href="http://bit.ly/RefonteWebEPFL" target="_blank">http://bit.ly/RefonteWebEPFL</a>
+    (accessible uniquement depuis l’EPFL)</p>
+<br><br><br>
+<p>
+    P.S. Vous avez reçu cet email parce que les informations qui nous ont été fournies pour ce site sont les suivantes:
+</p>
+<table>
+    <tr>
+        <td>Nom du site</td>
+        <td>{{ site_name }}</td>
+    </tr>
+    <tr>
+        <td>Unité associée à ce site</td>
+        <td>{{ unit }}</td>
+    </tr>
+    <tr>
+        <td>Webmestre(s) de ce site</td>
+        <td>{{ webmasters }}</td>
+    </tr>
+</table>
+<hr>
+<p>English version</p>
+<hr>
+Dear Sir or Madam,<br><br>
+<p>We have deployed (or redeployed in order to apply the latest updates and corrections) the '{{ site_name }}' site on
+    our test environment so you can perform a visual check of it. You are now in Step 2, of the migration process
+    workflow (<a href="https://help-wordpress.epfl.ch/wp-content/uploads/2018/08/Workflow_migration.pdf"
+                 target="_blank">click here to view</a>).</p>
+<p>You can access this site at the address : <a href="{{ WordPress_url }}">{{ WordPress_url }}</a> by clicking on login
+    at the bottom of the screen.<br>
+
+    <img src="https://help-wordpress.epfl.ch/wp-content/uploads/2018/03/ezgif.com-video-to-gif.gif"
+         alt="connexion à un site en migration"></p>
+</p>
+
+<p>Use the Provide feedback button on the right as shown below: <br>
+    <img src="https://help-wordpress.epfl.ch/wp-content/uploads/2018/03/Feedback-avec-Jira.gif"
+         alt="feedback avec Jira"></li>
+</p>
+
+<p>Thanks in advance for your collaboration.</p>
+
+<p>Should you have further questions, please don't hesitate to contact us.</p>
+
+<p>Kind Regards,</p>
+
+<p><a href="mailto:wp-migration@epfl.ch">The project team</a><br>
+    on behalf of the web project team <br>
+    More information at <a href="http://bit.ly/RefonteWebEPFL" target="_blank">http://bit.ly/RefonteWebEPFL</a> (only
+    available from EPFL)</p>
+<br><br><br>
+<p>
+    P.S. You received this mail because we were provided this information for this site:
+</p>
+<table>
+    <tr>
+        <td>Site name</td>
+        <td>{{ site_name }}</td>
+    </tr>
+    <tr>
+        <td>Associated EPFL unit (organizational unit)</td>
+        <td>{{ unit }}</td>
+    </tr>
+    <tr>
+        <td>Webmaster(s)</td>
+        <td>{{ webmasters }}</td>
+    </tr>
+</table>
+</body>
+</html>

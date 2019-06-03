@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>[WWP] Site [UP] redéployé en QA</title>
+</head>
+<body>
+Bonjour,<br><br>
+
+<p>Le site <b>{{ site_name }}</b> a été redéployé en QA alors qu'il est en <b>Update in Progress</b>. Il a été déplacé dans la colonne
+    <b>En attente de correction de bugs</b>.</p>
+
+<p>Il se peut que ce site contienne des issues <b>Won't Do</b> et que celles-ci aient déjà fait l'objet d'une communication
+auprès des Webmasters et que ceux-ci aient décidé que le site soit redéployé afin qu'ils puissent travailler dessus.</p>
+
+<p>Il faudrait donc aller voir s'il y a une issue <b>WordPress [WD] {{ site_name }}</b> qui existe dans ServiceNow.<br>
+Si c'est le cas, il faut :
+    <ol>
+        <li>Répondre à l'incident pour: <ul>
+            <li>Informer le webmaster que son site a été redéployé et qu'il peut travailler dessus.</li>
+            <li>Demander à ce qu'il réponde au mail pour dire quand les modifications auront été effectuées.</li>
+        </ul></li>
+        <li>Ajouter un commentaire à <b>{{ site_key }}</b> dans Jira pour dire que le webmaster a été notifié</li>
+    </ol>
+</p>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>[WWP] Sites migré de Jahia à WordPress</title>
+</head>
+<body>
+
+<hr>
+<p>English version below</p>
+<hr>
+Madame, Monsieur,<br><br>
+
+<p>Nous avons le plaisir de vous informer que le site '{{site_name}}' a été migré sur WordPress.</p>
+<p>
+    Vous pouvez dorénavant y accéder à l'adresse: <a
+        href="{{ Jahia_url }}" target="_blank"></a>{{ Jahia_url }}</p>
+<br><br>
+
+<p>Bonne journée,</p>
+
+<p><a href="mailto:wp-migration@epfl.ch">L'équipe de refonte web</a><br>
+    Pour l’équipe de projet de refonte du site web <br>
+    Plus d’informations à <a href="http://bit.ly/RefonteWebEPFL" target="_blank">http://bit.ly/RefonteWebEPFL</a>
+    (accessible uniquement depuis l’EPFL)</p>
+<br><br><br>
+<p>
+    P.S. Vous avez reçu cet email parce que les informations qui nous ont été fournies pour ce site sont les suivantes:
+</p>
+<table>
+    <tr>
+        <td>Nom du site</td>
+        <td>{{ site_name }}</td>
+    </tr>
+    <tr>
+        <td>Unité associée à ce site</td>
+        <td>{{ unit }}</td>
+    </tr>
+    <tr>
+        <td>Webmestre(s) de ce site</td>
+        <td>{{ webmasters }}</td>
+    </tr>
+</table>
+<hr>
+<p>English version</p>
+<hr>
+Dear Sir or Madam,<br><br>
+<p>We have the pleasure to inform you that the '{{ site_name }}' site has been migrated to WordPress.</p>
+<p>You can access this site at the address: <a href="{{ Jahia_url }}">{{ Jahia_url }}</a></p>
+
+<br><br>
+<p>Kind Regards,</p>
+
+<p><a href="mailto:wp-migration@epfl.ch">The project team</a><br>
+    on behalf of the web project team <br>
+    More information at <a href="http://bit.ly/RefonteWebEPFL" target="_blank">http://bit.ly/RefonteWebEPFL</a> (only
+    available from EPFL)</p>
+<br><br><br>
+<p>
+    P.S. You received this mail because we were provided this information for this site:
+</p>
+<table>
+    <tr>
+        <td>Site name</td>
+        <td>{{ site_name }}</td>
+    </tr>
+    <tr>
+        <td>Associated EPFL unit (organizational unit)</td>
+        <td>{{ unit }}</td>
+    </tr>
+    <tr>
+        <td>Webmaster(s)</td>
+        <td>{{ webmasters }}</td>
+    </tr>
+</table>
+</body>
+</html>

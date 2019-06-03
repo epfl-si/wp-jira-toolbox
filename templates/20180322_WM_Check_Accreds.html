@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>[WWP] Vérification des accreds pour les sites WordPress</title>
+</head>
+<body>
+
+<hr>
+<p>English version below</p>
+<hr>
+Madame, Monsieur,<br><br>
+
+<p>Il y a quelques semaines, <a href="mailto:magaly.mathys@epfl.ch">Magaly Mathys</a> a pris contact avec vous afin de vérifier que vous êtes bien la personne en
+    charge de votre site web. Cette vérification permettait de nous assurer que nous nous adressions aux bonnes
+    personnes et que les droits sur les sites Jahia étaient corrects.</p>
+
+<p>Comme vous le savez sans doute, nous sommes en train de migrer les sites dont vous êtes responsables de Jahia à
+    WordPress. Or, nous avons fait le choix de nous baser sur les accréditations pour gérer les droits d’édition des
+    sites. Pour faire cela, nous devons associer les sites WordPress avec des unités (plutôt qu’avec des personnes).
+    Cette approche a un certain nombre de bénéfices :</p>
+<ul>
+    <li>Plus besoin de gérer manuellement les droits d’accès à l’édition des sites</li>
+    <li>Lorsqu’une personne rejoint une unité, elle peut automatiquement obtenir les droits sur WordPress</li>
+    <li>De même, lorsqu’une personne quitte une unité, ses droits d’édition sur les sites web disparaissent
+        automatiquement
+    </li>
+</ul>
+<p>Malheureusement, cette association entre une unité et un site n’est pas triviale. Vous pouvez avoir plusieurs
+    accréditations qui font que nous ne pouvons pas deviner quelle unité correspond effectivement au site en
+    question.</p>
+
+<p>Nous avons besoin de votre aide sur les étapes suivantes:</p>
+
+<h2>1ère étape</h2>
+
+<p>Nous avons donc fait une première tentative d’association entre la (les) personne(s) en charge d’un site et une
+    unité. Vous trouverez, ci-dessous, le résultat de nos recherches :</p>
+
+<table style="border: thin solid black;" border="1">
+    <thead style="border: thin solid black; background-color: lightgray">
+    <tr style="border: thin solid black;">
+        <td>Url Jahia</td>
+        <td>Personne(s) responsable(s) de ce site</td>
+        <td>Unité associée</td>
+    </tr>
+    </thead>
+    <tbody>
+    {% for site in sites %}
+    {% if webmaster in site['persons_in_charge'] %}
+    <tr style="border: thin solid black;">
+        <td><a href="{{ site['jahia_url'] }}" target="_blank">{{ site['jahia_url'] }}</a></td>
+        <td>
+            {% for person in site['persons_in_charge'] %}
+            <a href="mailto:{{person}}">{{person}}</a><br>
+            {% endfor %}
+        </td>
+        <td><a href="http://bottin.epfl.ch/ubrowse.action?acro={{ site['associated_unit'] }}" target="_blank">{{ site['associated_unit'] }}</a></td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+    </tbody>
+</table>
+
+<h3>Pourriez-vous?</h3>
+<p>Nous confirmer, par retour de cet email, que l’unité que nous avons choisie pour chaque site correspond bien à
+    l’unité qui devrait être associée au site ?</p>
+<p>Nous vous remercions par avance de bien vouloir nous envoyer la confirmation des unités choisie d’ici à 10 jours.</p>
+
+<h2>2ème étape</h2>
+<p>Vérifier, en cliquant sur le lien intitulé ‘Liste des personnes ayant le droit d’édition WordPress pour cette unité’
+    dans le tableau, que les bonnes personnes ont bien le droit ‘Editeur WordPress’ ?</p>
+
+<table style="border: thin solid black;" border="1">
+    <thead style="border: thin solid black; background-color: lightgray">
+    <tr style="border: thin solid black;">
+        <td>Unité</td>
+        <td>Liste des personnes ayant le droit d’édition WordPress pour cette unité</td>
+        <td>Liste des accréditeurs pour cette unité</td>
+    </tr>
+    </thead>
+    <tbody style="border: thin solid black;">
+    {% for site in sites %}
+    {% if webmaster in site['persons_in_charge'] %}
+    <tr style="border: thin solid black;">
+        <td><a href="http://bottin.epfl.ch/ubrowse.action?acro={{ site['associated_unit'] }}" target="_blank">{{ site['associated_unit'] }}</a></td>
+        <td><a href="{{ site['link_to_persons_having_editor_right'] }}" target="_blank">{{ site['link_to_persons_having_editor_right'] }}</a></td>
+        <td><a href="{{ site['link_to_accreditors_for_the_unit'] }}" target="_blank">{{ site['link_to_accreditors_for_the_unit'] }}</a></td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+    </tbody>
+</table>
+
+
+<h2>Quelques éléments qui peuvent vous aider en cas de problème:</h2>
+<h3>Changements de droits</h3>
+<p>Si vous constatez que d’autres personnes doivent avoir accès à l’édition de chaque sites, deux options s’offrent à
+    vous
+    :</p>
+<ul>
+    <li>Vérifier qui est votre accréditeur (en cliquant sur le lien intitulé ‘Liste des accréditeurs pour cette
+        unité’)
+    </li>
+    <li>Prendre contact avec cette personne pour lui demander :
+        <ul>
+            <li>Soit de donner le rôle ‘responsable de communication’ dans cette unité à la personne que vous souhaitez
+                ajouter
+            </li>
+            <li>Soit de donner le droit ‘éditeur WordPress’ dans cette unité à personne que vous souhaitez ajouter</li>
+        </ul>
+    </li>
+</ul>
+
+<h3>Les accréditations</h3>
+<p>Si vous n’êtes pas familier avec le système d’accréditations, vous pourrez plus de détails sur :</p>
+<ul>
+    <li>Le site d’aide WordPress (<a href="https://help-wordpress.epfl.ch/gestion-des-droits/presentation/" target="_blank">https://help-wordpress.epfl.ch/gestion-des-droits/presentation/</a>)</li>
+    <li>Le site d’aide des accréditations (<a href="https://accreditation.epfl.ch/faq" target="_blank">https://accreditation.epfl.ch/faq</a>)</li>
+</ul>
+
+<p>Nous nous tenons évidemment à votre disposition si vous avez des questions.</p>
+
+<p>Bonne journée,</p>
+
+<p><a href="mailto:emmanuel.jaep@epfl.ch">Emmanuel Jaep</a><br>
+    Pour l’équipe de projet de refonte du site web <br>
+    Plus d’informations à <a href="http://bit.ly/RefonteWebEPFL" target="_blank">http://bit.ly/RefonteWebEPFL</a> (accessible uniquement depuis l’EPFL)</p>
+
+<hr>
+<p>English version</p>
+<hr>
+Dear Sir or Madam,<br><br>
+
+<p>A few weeks ago, <a href="mailto:magaly.mathys@epfl.ch">Magaly Mathys</a> got in touch with you in order to make sure you are the correct person in charge of your Jahia site. This allowed us to check that we are adressing the right persons. Furthermore, this allowed to make sure that the Jahia rigths are set up correctly.</p>
+
+<p>As you probably already know, we are currently migrating the site(s) you are managing to WordPress. In order to ease the management of the access rights, we decided to leverage the accreditation system at EPFL. This approach brings several benefits:</p>
+<ul>
+    <li>there is no need to manually manage the rights on each and every site</li>
+    <li>when a new person joins a team at EPFL, (s)he has automatically access to WordPress</li>
+    <li>Reciprocally, when someone quits EPFL, his (her) rights are automatically revoked
+    </li>
+</ul>
+
+<p>Unfortunately, associating a unit with a site is not trivial. You may be accredited in several units and we can't get guess which unit is actually related to your site.</p>
+
+<p>Therefore, we need your help for the following steps:</p>
+
+<h2>1st step</h2>
+
+<p>We have tried to associate the person(s) in charge of a site with a unit. You will find the results below:</p>
+
+
+<table style="border: thin solid black;" border="1">
+    <thead style="border: thin solid black; background-color: lightgray">
+    <tr style="border: thin solid black;">
+        <td>Jahia URL</td>
+        <td>Person(s) in charge of this site</td>
+        <td>Associated unit</td>
+    </tr>
+    </thead>
+    <tbody>
+    {% for site in sites %}
+    {% if webmaster in site['persons_in_charge'] %}
+    <tr style="border: thin solid black;">
+        <td><a href="{{ site['jahia_url'] }}" target="_blank">{{ site['jahia_url'] }}</a></td>
+        <td>
+            {% for person in site['persons_in_charge'] %}
+            <a href="mailto:{{person}}">{{person}}</a><br>
+            {% endfor %}
+        </td>
+        <td><a href="http://bottin.epfl.ch/ubrowse.action?acro={{ site['associated_unit'] }}" target="_blank">{{ site['associated_unit'] }}</a></td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+    </tbody>
+</table>
+
+<h3>Could you please:</h3>
+<p>Confirm, that the site(s) are associated correctly with the unit(s)?</p>
+<p>We would be grateful if you could perform that check within 10 days.</p>
+
+<h2>2nd step</h2>
+<p>Could you please check that the right persons have the 'WordPress Editor' right?</p>
+<p>This check can be performed by clicking the link called 'List of persons having the 'WordPress Editor' right' in the below table.</p>
+
+
+<table style="border: thin solid black;" border="1">
+    <thead style="border: thin solid black; background-color: lightgray">
+    <tr style="border: thin solid black;">
+        <td>Unit</td>
+        <td>List of persons having the 'WordPress Editor' right</td>
+        <td>List of accreditors for this unit</td>
+    </tr>
+    </thead>
+    <tbody style="border: thin solid black;">
+    {% for site in sites %}
+    {% if webmaster in site['persons_in_charge'] %}
+    <tr style="border: thin solid black;">
+        <td><a href="http://bottin.epfl.ch/ubrowse.action?acro={{ site['associated_unit'] }}" target="_blank">{{ site['associated_unit'] }}</a></td>
+        <td><a href="{{ site['link_to_persons_having_editor_right'] }}" target="_blank">{{ site['link_to_persons_having_editor_right'] }}</a></td>
+        <td><a href="{{ site['link_to_accreditors_for_the_unit'] }}" target="_blank">{{ site['link_to_accreditors_for_the_unit'] }}</a></td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+    </tbody>
+</table>
+
+
+<h2>In case you have difficulties:</h2>
+<h3>Changing rights</h3>
+<p>You have two options if you notice that other people should be able to edit the site(s):</p>
+<ul>
+    <li>Check who is you accreditor (by clicking on the link called 'List of accreditors for this unit')</li>
+    <li>Get in touch with this person and ask him (her) to:
+        <ul>
+            <li>Assign the role 'Communication Officer' to the correct person(s)</li>
+            <li>Grant the right 'WordPress Editor' to the correct person(s)</li>
+        </ul>
+    </li>
+</ul>
+<h3>Accreditations</h3>
+<p>If you are not at ease with the accreditations system, you can get some help here:</p>
+<ul>
+    <li>The WordPress help site (<a href="https://help-wordpress.epfl.ch/gestion-des-droits/presentation/" target="_blank">https://help-wordpress.epfl.ch/gestion-des-droits/presentation/</a>)</li>
+    <li>The accreditations help site (<a href="https://accreditation.epfl.ch/faq" target="_blank">https://accreditation.epfl.ch/faq</a>)</li>
+</ul>
+
+
+<p>Should you have further questions, please don't hesitate to contact us.</p>
+
+<p>Kind Regards,</p>
+
+<p><a href="mailto:emmanuel.jaep@epfl.ch">Emmanuel Jaep</a><br>
+    on behalf of the web project team <br>
+    More information at <a href="http://bit.ly/RefonteWebEPFL" target="_blank">http://bit.ly/RefonteWebEPFL</a> (only available from EPFL)</p>
+</body>
+</html>

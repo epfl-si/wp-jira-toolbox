@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>[WWP] Contrôle visuel des sites migrés de Jahia à WordPress</title>
+</head>
+<body>
+
+<hr>
+<p>English version below</p>
+<hr>
+Bonjour,<br><br>
+
+{% set qa_source = QA_source %}
+
+{% if qa_source == 'vide' %}
+<p>Nous vous informons que nous vous avons créé un site vide en y appliquant la nouvelle charte:
+     <a href="{{ QA18_url }}" target="_blank">{{ QA18_url }}</a>.
+    Vous pouvez désormais procéder aux adaptations et corrections en vue de sa publication
+    en lieu et place de votre ancien site.
+</p>
+
+{% else %}
+<p>Nous vous informons que nous vous avons créé une copie de votre
+    site <a href="{{ WordPress_url }}" target="_blank">{{ WordPress_url }}</a> en y appliquant la nouvelle charte:
+    <a href="{{ QA18_url }}" target="_blank">{{ QA18_url }}</a>.
+    Vous pouvez désormais procéder aux adaptations et corrections en vue de sa publication
+    en lieu et place de votre ancien site.
+</p>
+
+{% endif %}
+
+<p>Dès que vous êtes prêts nous vous invitons à nous écrire à <a href="mailto:wp-migration@epfl.ch">wp-migration@epfl.ch</a>
+    pour nous demander la mise en ligne de cette dernière version et procéder à la redirection du trafic
+    de l’ancienne adresse vers la nouvelle: <a href="{{ url_ventilee }}" target="_blank">{{ url_ventilee }}</a>.
+</p>
+
+<p>Salutations,</p>
+
+<p>L’équipe projet Refonte Web.</p>
+<hr>
+<p>English version</p>
+<hr>
+Dear Sir or Madam,<br><br>
+
+
+{% if qa_source == 'vide' %}
+<p>We inform you that we have created an empty site with the new visual identity applied:
+    <a href="{{ QA18_url }}" target="_blank">{{ QA18_url }}</a>. You can now make the adaptations
+    and corrections for future publication instead of your old site.</p>
+
+{% else %}
+<p>We inform you that we have made a copy of your site
+    <a href="{{ WordPress_url }}" target="_blank">{{ WordPress_url }}</a> <br>
+    with the new visual identity applied: <a href="{{ QA18_url }}" target="_blank">{{ QA18_url }}</a>.
+    You can now make the adaptations and corrections for future publication instead of your old site.
+</p>
+
+{% endif %}
+
+<p>As soon as you are ready, we invite you to send us an email at <a href="mailto:wp-migration@epfl.ch">wp-migration@epfl.ch</a>
+    requesting the switch of this latest version on line and to proceed with the traffic redirection
+    from the old address to the new one: <a href="{{ url_ventilee }}" target="_blank">{{ url_ventilee }}</a>.
+</p>
+
+<p>Best,</p>
+
+<p>The project team<br></p>
+<br><br><br>
+
+</body>
+</html>
