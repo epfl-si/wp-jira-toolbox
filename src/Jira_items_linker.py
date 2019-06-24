@@ -120,7 +120,7 @@ def transition_sites_waiting_for_fix() -> None:
                 break
 
         if should_be_transitioned:
-            transition_site(site_having_bu gs.key, 'A redeployer en QA')
+            transition_site(site_having_bugs.key, 'A redeployer en QA')
 
 
 if __name__ == "__main__":
