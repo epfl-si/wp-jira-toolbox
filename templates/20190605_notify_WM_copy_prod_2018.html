@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Changement identité visuelle </title>
+</head>
+<body>
+
+<hr>
+<p>English version below</p>
+<hr>
+Bonjour,<br><br>
+
+{% set url = fin_url %}
+
+{% if url == "/" %}
+
+<p>Nous vous informons que nous vous avons copié votre site avec la nouvelle charte graphique sous
+    <a href="{{ url_ventilee }}" target="_blank">{{ url_ventilee }}</a>.
+    Le bouton login a été retiré de la nouvelle charte graphique. Pour administrer votre site, il faut ajouter "/wp-admin" à la fin de l’adresse de votre site, soit
+    <a href="{{ url_ventilee }}wp-admin" target="_blank">{{ url_ventilee }}wp-admin</a>. Vous pouvez donc dès maintenant composer vos nouvelles pages et votre menu.
+</p>
+
+{% else %}
+
+<p>Nous vous informons que nous vous avons copié votre site avec la nouvelle charte graphique sous
+    <a href="{{ url_ventilee }}" target="_blank">{{ url_ventilee }}</a>.
+    Le bouton login a été retiré de la nouvelle charte graphique. Pour administrer votre site, il faut ajouter "/wp-admin" à la fin de l’adresse de votre site, soit
+    <a href="{{ url_ventilee }}/wp-admin" target="_blank">{{ url_ventilee }}/wp-admin</a>. Vous pouvez donc dès maintenant composer vos nouvelles pages et votre menu.
+</p>
+
+{% endif %}
+
+<p>Dès que vous êtes prêts nous vous invitons à nous écrire à <a href="mailto:wp-migration@epfl.ch">wp-migration@epfl.ch</a> pour nous demander la mise en ligne de votre site et
+    procéder à la redirection du trafic de l’ancienne adresse vers la nouvelle <a href="{{ url_ventilee }}" target="_blank">{{ url_ventilee }}</a> et à l’archivage de
+    <a href="{{ WordPress_url }}" target="_blank">{{ WordPress_url }}</a>.
+</p>
+
+<p>Quelques rappels :
+    <ul>
+    <li>Pendant la phase d’adaptation c’est votre site <a href="{{ WordPress_url }}" target="_blank">{{ WordPress_url }}</a>
+        (ancienne charte) qui reste visible du public.</li>
+    <li>au terme de votre adaptation c’est <a href="{{ url_ventilee }}" target="_blank">{{ url_ventilee }}</a> qui remplace
+        <a href="{{ WordPress_url }}" target="_blank">{{ WordPress_url }}</a>. En cas de contenu à publier durant la préparation de vos nouvelles pages,
+        pensez donc à le faire sur votre site qui reste public et vos nouvelles pages. Afin d’éviter ces doubles mises à jour, il est donc recommandé de minimiser le temps d'adaptation.</li>
+    <li>aide et informations sont disponibles sur
+        <a href="https://help-wordpress.epfl.ch" target="_blank">https://help-wordpress.epfl.ch</a></li>
+    <li>vous pouvez travailler en groupe aux séances « work and share » des
+        <a href="https://www.epfl.ch/about/vice-presidencies/fr/vice-presidences/vice-presidence-pour-les-systemes-dinformation/actualites-et-evenements/" target="_blank">permanences WEB</a></li>
+    <li>si vous êtes en dehors du réseau de l’EPFL, il faut le VPN.</li>
+    </ul>
+</p>
+<p>Dans l’attente de votre message<br>
+Meilleures salutations<br>
+L’équipe projet<br>
+Refonte Web</p>
+<br><br><br>
+
+
+<hr>
+<p>English version</p>
+<hr>
+Dear Sir or Madam,<br><br>
+
+{% if url == "/" %}
+
+<p>We inform you that we have copied your site with the new graphic charter at this location <a href="{{ url_ventilee }}" target="_blank">{{ url_ventilee }}</a>.
+    The login button has been removed from the new graphic charter. To manage your site, you must add "/wp-admin" at the end of your site address, ie
+    <a href="{{ url_ventilee }}wp-admin" target="_blank">{{ url_ventilee }}wp-admin</a>. You can now create your new pages and the site menu.
+</p>
+
+{% else %}
+
+<p>We inform you that we have copied your site with the new graphic charter at this location <a href="{{ url_ventilee }}" target="_blank">{{ url_ventilee }}</a>.
+    The login button has been removed from the new graphic charter. To manage your site, you must add "/wp-admin" at the end of your site address, ie
+    <a href="{{ url_ventilee }}/wp-admin" target="_blank">{{ url_ventilee }}/wp-admin</a>. You can now create your new pages and the site menu.
+</p>
+
+{% endif %}
+
+<p>As soon as you are ready, we invite you to send us an email at <a href="mailto:wp-migration@epfl.ch">wp-migration@epfl.ch</a>
+    to request the push online of your site and set up the traffic redirects from the old address to the new <a href="{{ url_ventilee }}/wp-admin" target="_blank">{{ url_ventilee }}/wp-admin</a>
+    and archiving <a href="{{ WordPress_url }}" target="_blank">{{ WordPress_url }}</a>.
+</p>
+
+<p>Some reminders :
+    <ul>
+    <li>During the adaptation phase, your site <a href="{{ WordPress_url }}" target="_blank">{{ WordPress_url }}</a>
+        (old charter) remains the one visible to the public.</li>
+    <li>at the end of your adaptation it is <a href="{{ url_ventilee }}" target="_blank">{{ url_ventilee }}</a>
+        which replaces <a href="{{ WordPress_url }}" target="_blank">{{ WordPress_url }}</a>. In case of content to be published during the preparation of your pages,
+        remember to update your information on your public site and the pages. In order to avoid these double updates, it is therefore recommended to minimize the adaptation time.</li>
+    <li>Help and information are available at
+        <a href="https://help-wordpress.epfl.ch" target="_blank">https://help-wordpress.epfl.ch</a></li>
+    <li>you can work in groups at the work and share sessions of the
+        <a href="https://www.epfl.ch/about/vice-presidencies/vice-presidencies/information-systems/news-events/" target="_blank">WEB hotlines</a></li>
+    <li>if you are outside the EPFL network, you need the VPN.Looking forward to your message.</li>
+    </ul>
+</p>
+<p>Looking forward to your message<br>
+Best regards<br>
+The project team<br>
+Web redesign</p>
+
+<br><br><br>
+
+
+</body>
+</html>

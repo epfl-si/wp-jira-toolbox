@@ -1,5 +1,6 @@
-from jira import JIRA
+
 import settings
+from jira import JIRA
 import smtplib
 import os
 from email.mime.multipart import MIMEMultipart
@@ -7,13 +8,14 @@ from email.mime.text import MIMEText
 from jinja2 import Environment, select_autoescape, FileSystemLoader
 
 
-def get_ready_sites_2018() -> list:
+
+def get_sites_deployed_in_QA_2018() -> list:
     jira = JIRA(settings.JIRA_URL, basic_auth=(settings.JIRA_USERNAME, settings.JIRA_PASSWORD))
-    sites = jira.search_issues('project = WP2018 AND status = "Notification de fin"', maxResults=10000)
+    sites = jira.search_issues('project = WP2018 AND status = "Communiqué - attente retour WM" AND cf[10903] = Lab AND ID!=WP2018-664', maxResults=1000)
     return sites
 
 
-def transition_site(key: str, new_status: str, site_name, site) -> None:
+def transition_site(key: str, new_status: str) -> None:
     jira = JIRA(settings.JIRA_URL, basic_auth=(settings.JIRA_USERNAME, settings.JIRA_PASSWORD))
 
     transitions = jira.transitions(key)
@@ -56,7 +58,7 @@ def send_message(to: str, subject: str, message: str) -> None:
     smtp.quit()
 
 
-def notify_webmasters(key: str, site_name: str, webmasters: str, wordpress_url: str, QA18_url:str, url_ventilation: str, url_racine_instance: str, URL_racine_instance : str, fin_url1: str, fin_url2: str) -> None:
+def notify_webmasters(key: str, site_name: str, webmasters: str, wordpress_url: str, QA18_url:str, url_ventilation: str, QA_source: str) -> None:
     # time to buid the mails
     jinja_env = Environment(
         loader=FileSystemLoader("{}/templates/".format(os.path.dirname(os.path.dirname(__file__)))),
@@ -64,25 +66,24 @@ def notify_webmasters(key: str, site_name: str, webmasters: str, wordpress_url: 
         trim_blocks=True,
         lstrip_blocks=True)
 
-    jinja_template = jinja_env.get_template("20180516_WM18_finished_migration_notification.html")
+    jinja_template = jinja_env.get_template("20190606_notify_lab_WP2010toWP2018_choice.py.html")
 
     # Send the mail
     for webmaster in webmasters.split("|"):
-        msgSubject = "[{0}] Votre site est en ligne avec la nouvelle charte - Your website is online with the new charter".format(
+        msgSubject = "[{0}] Rappel: Lab - changement identité visuelle / Reminder: New visual identity".format(
             site_name)
         msgBody = jinja_template.render(site_name=site_name, webmasters=", ".join(webmasters.split("|")),
                                         WordPress_url=wordpress_url, QA18_url=QA18_url,
-                                        url_ventilee=url_ventilation, url_racine_instance=url_racine_instance, URL_racine_instance=URL_racine_instance,
-                                        fin_url1=fin_url1, fin_url2=fin_url2)
+                                        url_ventilee=url_ventilation, QA_source=QA_source)
         send_message(webmaster, msgSubject, msgBody)
 
     jira = JIRA(settings.JIRA_URL, basic_auth=(settings.JIRA_USERNAME, settings.JIRA_PASSWORD))
-    comment = "{}: Notified '{}' that the site 2018 is ready".format(site_name, webmasters)
+    comment = "{}: Reminder : Notified '{}' lab to make choice copy ou empty ".format(site_name, webmasters)
     jira.add_comment(key, comment)
 
 
-def notif_de_fin():
-    sites = get_ready_sites_2018()
+if __name__ == "__main__":
+    sites = get_sites_deployed_in_QA_2018()
     for site in sites:
         site_key = site.key
         site_name = site.fields.summary
@@ -91,11 +92,10 @@ def notif_de_fin():
         wordpress_url = site.fields.customfield_10501
         QA18_url = site.fields.customfield_10908
         url_ventilation = site.fields.customfield_10900
-        url_racine_instance = site.fields.customfield_11120
-        URL_racine_instance = site.fields.customfield_11120
+        QA_source = site.fields.customfield_10902 #tells if copy or empty site
 
-        notify_webmasters(site_key, site_name, webmasters, wordpress_url, QA18_url, url_ventilation, url_racine_instance, str(URL_racine_instance), str(url_ventilation)[-1], str(url_racine_instance)[-1])
-        transition_site(site_key, "Fin notifiée", site_name, site)
 
-if __name__ == "__main__":
-    notif_de_fin()
+        notify_webmasters(site_key, site_name, webmasters, wordpress_url, QA18_url, url_ventilation, str(QA_source))
+        transition_site(site_key, "Notification WM")
+
+

@@ -15,13 +15,42 @@ Bonjour,<br><br>
     la nouvelle identité visuelle. L’ancienne adresse <a href="{{ WordPress_url }}" target="_blank">{{ WordPress_url }}</a>
     est maintenant redirigée vers la nouvelle adresse: <a href="{{ url_ventilee }}" target="_blank">{{ url_ventilee }}</a>.
 </p>
-<p>Pour mettre à jour et administrer votre site, veuillez utiliser cette adresse (wp-admin à la fin de l’adresse de
-    votre site) : <a href="{{ url_ventilee }}/wp-admin" target="_blank">{{ url_ventilee }}/wp-admin</a></p>
+
+{% set url = URL_racine_instance %}
+{% set urlbis1 = fin_url1 %}
+{% set urlbis2 = fin_url2 %}
+
+{% if url == 'None' %}
+
+    {% if urlbis1 == "/" %}
+
+    <p>Pour mettre à jour et administrer votre site, veuillez utiliser cette adresse (wp-admin à la fin de l’adresse de
+        votre site) : <a href="{{ url_ventilee }}wp-admin" target="_blank">{{ url_ventilee }}wp-admin</a></p>
+
+    {% else %}
+
+    <p>Pour mettre à jour et administrer votre site, veuillez utiliser cette adresse (wp-admin à la fin de l’adresse de
+        votre site) : <a href="{{ url_ventilee }}/wp-admin" target="_blank">{{ url_ventilee }}/wp-admin</a></p>
+
+    {% endif %}
+
+{% else %}
+
+    {% if urlbis2 == "/" %}
+
+    <p>Pour mettre à jour et administrer votre site, veuillez utiliser cette adresse : <a href="{{ url_racine_instance }}wp-admin" target="_blank">{{ url_racine_instance }}wp-admin</a></p>
+
+    {% else %}
+
+    <p>Pour mettre à jour et administrer votre site, veuillez utiliser cette adresse : <a href="{{ url_racine_instance }}/wp-admin" target="_blank">{{ url_racine_instance }}/wp-admin</a></p>
+
+    {% endif %}
+
+{% endif %}
 
 <p>Nous vous remercions de vos efforts et pour votre contribution dans ce grand projet de refonte du web EPFL.
 </p>
 
-<p> Pour rappel, pour administrer votre site, vous devez ajouter wp-admin à la fin de l’adresse. </p>
 <br>
 
 <p>Bonne journée,</p>
@@ -41,13 +70,35 @@ Dear Sir or Madam,<br><br>
     redirect to the new one: <a href="{{ url_ventilee }}" target="_blank">{{ url_ventilee }}</a>.
 </p>
 
+{% if url == 'None' %}
+
+{% if urlbis1 == "/" %}
+
+<p>In order to update and manage your website, please use the following link (wp-admin at the end of your website
+    address) : <a href="{{ url_ventilee }}wp-admin" target="_blank">{{ url_ventilee }}wp-admin</a></p>
+
+{% else %}
+
 <p>In order to update and manage your website, please use the following link (wp-admin at the end of your website
     address) : <a href="{{ url_ventilee }}/wp-admin" target="_blank">{{ url_ventilee }}/wp-admin</a></p>
 
-<p>We thank you for your efforts and for your contribution in this great project of the EPFL web redesigning.
-</p>
+{% endif %}
 
-<p>As a reminder, to manage your site, you must add wp-admin at the end of the address.
+{% else %}
+
+{% if urlbis2 == "/" %}
+
+<p>In order to update and manage your website, please use the following link : <a href="{{ url_racine_instance }}wp-admin" target="_blank">{{ url_racine_instance }}wp-admin</a></p>
+
+{% else %}
+
+<p>In order to update and manage your website, please use the following link : <a href="{{ url_racine_instance }}/wp-admin" target="_blank">{{ url_racine_instance }}/wp-admin</a></p>
+
+{% endif %}
+
+{% endif %}
+
+<p>We thank you for your efforts and for your contribution in this great project of the EPFL web redesigning.
 </p>
 
 <br>

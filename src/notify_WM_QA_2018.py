@@ -11,11 +11,11 @@ from jinja2 import Environment, select_autoescape, FileSystemLoader
 
 def get_sites_deployed_in_QA_2018() -> list:
     jira = JIRA(settings.JIRA_URL, basic_auth=(settings.JIRA_USERNAME, settings.JIRA_PASSWORD))
-    sites = jira.search_issues('project = WP2018 AND status = "Copié en QA18 à notifier"', maxResults=10000)
+    sites = jira.search_issues('project = WP2018 AND status = "Copié en QA18 à notifier" AND cf[10903] != "Conf. Sub domain" AND cf[10903] != "Lab ventilé"', maxResults=10000)
     return sites
 
 
-def transition_site(key: str, new_status: str) -> None:
+def transition_site(key: str, new_status: str, site_name, site) -> None:
     jira = JIRA(settings.JIRA_URL, basic_auth=(settings.JIRA_USERNAME, settings.JIRA_PASSWORD))
 
     transitions = jira.transitions(key)
@@ -70,7 +70,7 @@ def notify_webmasters(key: str, site_name: str, webmasters: str, wordpress_url: 
 
     # Send the mail
     for webmaster in webmasters.split("|"):
-        msgSubject = "[WWP] [{0}] Le site '{0}' a été (re)déployé / The '{0}' site has been (re)deployed".format(
+        msgSubject = "[{0}] Votre site copié dans l’environnement d’adaptation est prêt – The copy of your site in the prepration environment is ready".format(
             site_name)
         msgBody = jinja_template.render(site_name=site_name, webmasters=", ".join(webmasters.split("|")),
                                         WordPress_url=wordpress_url, QA18_url=QA18_url,
@@ -82,7 +82,7 @@ def notify_webmasters(key: str, site_name: str, webmasters: str, wordpress_url: 
     jira.add_comment(key, comment)
 
 
-if __name__ == "__main__":
+def copy_QA():
     sites = get_sites_deployed_in_QA_2018()
     for site in sites:
         site_key = site.key
@@ -96,5 +96,8 @@ if __name__ == "__main__":
 
 
         notify_webmasters(site_key, site_name, webmasters, wordpress_url, QA18_url, url_ventilation, str(QA_source))
-        transition_site(site_key, "Notif QA2018 créé")
+        transition_site(site_key, "Notif QA2018 créé", site_name, site)
 
+
+if __name__ == "__main__":
+    copy_QA()
