@@ -9,7 +9,7 @@ from jinja2 import Environment, select_autoescape, FileSystemLoader
 
 def get_ready_sites_2018() -> list:
     jira = JIRA(settings.JIRA_URL, basic_auth=(settings.JIRA_USERNAME, settings.JIRA_PASSWORD))
-    sites = jira.search_issues('project = WP2018 AND status = "Notification de fin"', maxResults=10000)
+    sites = jira.search_issues('project = WP2018 AND status = "Notification de fin" AND cf[10903] != "Conf. Sub domain" AND cf[10903] != "Pas de notif."', maxResults=10000)
     return sites
 
 
