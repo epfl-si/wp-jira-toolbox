@@ -11,7 +11,7 @@ from jinja2 import Environment, select_autoescape, FileSystemLoader
 
 def get_sites_deployed_in_QA_2018() -> list:
     jira = JIRA(settings.JIRA_URL, basic_auth=(settings.JIRA_USERNAME, settings.JIRA_PASSWORD))
-    sites = jira.search_issues('project = WP2018 AND status = "Instance Vide Prod18 A notifier"', maxResults=100)
+    sites = jira.search_issues('project = WP2018 AND status = "Instance Vide Prod18 A notifier" AND cf[10903] != "Pas de notif."', maxResults=100)
     return sites
 
 
