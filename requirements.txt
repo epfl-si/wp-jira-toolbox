@@ -10,7 +10,7 @@ Jinja2==2.10
 jira==1.0.14
 ldap3==2.5
 MarkupSafe==1.0
-numpy==1.14.3
+numpy==1.22.0
 oauth2-client==0.0.21
 oauth2client==4.1.2
 oauthlib==2.0.6
